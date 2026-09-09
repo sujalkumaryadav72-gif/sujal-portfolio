@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags & SEO -->
+  <title>Sujal Kumar | Full Stack Developer Portfolio</title>
+  <meta name="title" content="Sujal Kumar | Full Stack Developer Portfolio">
+  <meta name="description" content="Portfolio of Sujal Kumar, Computer Science &amp; Engineering student at LPU and aspiring Full Stack Developer. Strengthening programming fundamentals and building practical web applications.">
+  <meta name="keywords" content="Sujal Kumar, Full Stack Developer, Computer Science, LPU, Web Developer, Python, Java, C++, JavaScript, Portfolio">
+  <meta name="author" content="Sujal Kumar">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sujal Kumar | Full Stack Developer Portfolio">
+  <meta property="og:description" content="Computer Science &amp; Engineering student passionate about programming fundamentals, web development, and practical software solutions.">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.4.0 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Three.js 3D WebGL Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-visual-mode="3d">
+
+  <!-- Ambient Glowing Orbs -->
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+  <div class="bg-ambient-orb orb-3"></div>
+
+  <!-- Background 2D Particle Network Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Three.js Interactive 3D WebGL Canvas -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- =========================================================================
+       Header & Sticky Navigation Bar
+       ========================================================================= -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#hero" class="logo" aria-label="Sujal Kumar Home">
+        <span class="logo-badge">S</span>
+        <span>Sujal<span class="gradient-text">.dev</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#learning" class="nav-link">Learning</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Utilities -->
+      <div class="nav-actions">
+        <!-- Official CV Download / View Button -->
+        <a href="assets/Sujal_Kumar_CV.pdf" target="_blank" download="Sujal_Kumar_CV.pdf" class="btn-cv-nav" title="Download Official CV">
+          <i class="fas fa-file-pdf"></i>
+          <span>Resume / CV</span>
+        </a>
+
+        <!-- 3D / 2D Visual Experience Switcher -->
+        <button id="visual-mode-btn" class="visual-mode-btn" aria-label="Toggle 3D and 2D Visual Experience" title="Switch between 3D WebGL and 2D Constellation">
+          <i id="visual-mode-icon" class="fas fa-cube"></i>
+          <span id="visual-mode-label">3D Visual</span>
+          <span id="visual-mode-badge" class="mode-badge">ON</span>
+        </button>
+
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode" title="Switch Theme">
+          <i id="theme-icon" class="fas fa-sun"></i>
+        </button>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Mobile Menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile Navigation">
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#education" class="nav-link">Education &amp; Experience</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#certifications" class="nav-link">Certifications</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#learning" class="nav-link">Learning &amp; Platforms</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="assets/Sujal_Kumar_CV.pdf" target="_blank" download="Sujal_Kumar_CV.pdf" class="nav-link mobile-cv-link">
+        <i class="fas fa-file-pdf"></i> Download Official CV
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         Hero Section
+         ========================================================================= -->
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Text & CTAs -->
+          <div class="hero-content">
+            <!-- 3D / 2D Visual Experience Pill Selector -->
+            <div class="hero-visual-toggle" id="hero-visual-toggle">
+              <span class="hero-toggle-label">Experience:</span>
+              <button class="visual-pill active" data-visual-opt="3d">
+                <i class="fas fa-cube"></i> 3D WebGL
+              </button>
+              <button class="visual-pill" data-visual-opt="2d">
+                <i class="fas fa-project-diagram"></i> 2D Clean
+              </button>
+            </div>
+
+            <div class="hero-badge">
+              <span class="status-dot"></span>
+              <span>Available for internships &amp; collaborative learning</span>
+            </div>
+
+            <h1 class="hero-title">
+              Hi, I'm <span class="gradient-text">Sujal Kumar</span>
+            </h1>
+
+            <div class="hero-role">
+              <i class="fas fa-code"></i>
+              <span>Computer Science &amp; Engineering Student | Aspiring Full Stack Developer</span>
+            </div>
+
+            <p class="hero-bio-short">
+              Focused on strengthening core programming fundamentals and converting them into practical, user-friendly, and dependable web applications.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">
+                <span>View My Projects</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a href="assets/Sujal_Kumar_CV.pdf" target="_blank" download="Sujal_Kumar_CV.pdf" class="btn btn-accent-cv" id="hero-download-cv-btn" title="Download Official CV (PDF)">
+                <i class="fas fa-file-pdf"></i>
+                <span>Download CV</span>
+              </a>
+              <button class="btn btn-secondary" id="preview-cv-btn" type="button" title="Preview Official CV">
+                <i class="fas fa-eye"></i>
+                <span>View CV</span>
+              </button>
+              <a href="#contact" class="btn btn-outline-sm" style="padding: 12px 18px;">
+                <span>Contact</span>
+                <i class="fas fa-paper-plane"></i>
+              </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="hero-socials">
+              <a href="https://github.com/sujalkumaryadav72-gif" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/sujal-kumar-2036a3393/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="mailto:sujalkumaryadav72@gmail.com" class="social-link" aria-label="Send Email" title="Email Sujal">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="tel:9304792099" class="social-link" aria-label="Call Phone" title="Phone">
+                <i class="fas fa-phone-alt"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Visual / Profile Card -->
+          <div class="hero-visual">
+            <div class="hero-card-frame">
+              <!-- Floating developer pills -->
+              <div class="floating-pill pill-left">
+                <i class="fas fa-terminal" style="color: var(--accent-cyan);"></i>
+                <span>Problem Solver</span>
+              </div>
+              <div class="floating-pill pill-right">
+                <i class="fas fa-laptop-code" style="color: var(--accent-purple);"></i>
+                <span>Full Stack Focus</span>
+              </div>
+
+              <div class="avatar-wrapper">
+                <!-- Profile Picture: Easily replaceable with any photo by updating src or replacing images/profile.jpg -->
+                <img src="images/profile.jpg" alt="Sujal Kumar - Profile Visual" class="avatar-img" id="profile-picture" onerror="this.onerror=null; this.src='images/avatar.svg';">
+              </div>
+
+              <div class="avatar-caption">
+                <span class="avatar-name-tag">Sujal Kumar</span>
+                <span class="avatar-sub-tag">B.Tech CSE '29 &bull; CGPA: 7.73</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         About Section
+         ========================================================================= -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-user"></i>
+            <span>About Me</span>
+          </div>
+          <h2 class="section-title">Driven by Curiosity, Grounded in Fundamentals</h2>
+          <p class="section-subtitle">A glimpse into my mindset, passion for engineering, and developer journey.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Bio Narrative -->
+          <div class="about-bio-card">
+            <p>
+              I'm a Computer Science and Engineering student focused on strengthening my programming fundamentals and turning them into practical, web-based applications.
+            </p>
+            <p>
+              My coursework and self-study revolve around Python, C, C++, Java, frontend technologies, and basic SQL. I enjoy problem-solving, breaking requirements into smaller parts, structuring clean solutions, and refining them until they work reliably.
+            </p>
+            <p>
+              Continuous learning keeps me moving forward through structured courses, active coding platforms, and hands-on projects where theory meets execution.
+            </p>
+          </div>
+
+          <!-- 4 Pillars / Highlights -->
+          <div class="about-highlights">
+            <div class="highlight-box">
+              <div class="highlight-icon">
+                <i class="fas fa-code-branch"></i>
+              </div>
+              <h3>Programming Core</h3>
+              <p>Strengthening logic across Python, Java, C, and C++ with clean structure and algorithmic clarity.</p>
+            </div>
+
+            <div class="highlight-box">
+              <div class="highlight-icon">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <h3>Web Development</h3>
+              <p>Crafting accessible, responsive user interfaces backed by sensible application workflows.</p>
+            </div>
+
+            <div class="highlight-box">
+              <div class="highlight-icon">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+              <h3>Problem Solving</h3>
+              <p>Breaking intricate requirements into modular, step-by-step solutions that behave reliably.</p>
+            </div>
+
+            <div class="highlight-box">
+              <div class="highlight-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <h3>Continuous Learning</h3>
+              <p>Iterating daily on competitive platforms, structured labs, and self-directed development.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Education & Experience Section
+         ========================================================================= -->
+    <section id="education" class="education-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-university"></i>
+            <span>Academic Background &amp; Path</span>
+          </div>
+          <h2 class="section-title">Education &amp; Experience Journey</h2>
+          <p class="section-subtitle">Academic foundations paired with project-based hands-on engineering.</p>
+        </div>
+
+        <div class="edu-exp-grid">
+          <!-- Formal Education Card -->
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <div class="timeline-card-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div>
+                <h3 class="timeline-card-title">Formal Education</h3>
+                <p class="timeline-card-desc">Academic milestone &amp; university curriculum</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <span class="timeline-tag">2025 - 2029 • Currently Pursuing</span>
+                <span class="tech-tag" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: var(--accent-cyan); font-weight: 700; padding: 3px 12px; border-radius: 9999px; font-size: 0.85rem;">
+                  <i class="fas fa-star" style="margin-right: 5px; color: #f59e0b;"></i>CGPA: 7.52
+                </span>
+              </div>
+              <h4 class="timeline-heading">B.Tech Computer Science and Engineering</h4>
+              <p class="timeline-sub">Lovely Professional University (LPU)</p>
+              <p class="timeline-text">
+                Pursuing B.Tech in CSE with a current <strong>CGPA of 7.52</strong>. Engaging in foundational and advanced computer science coursework covering computational problem-solving, object-oriented programming, data structures, and database principles.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <span class="timeline-tag">Higher Secondary (12th Grade)</span>
+                <span class="tech-tag" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: var(--accent-emerald); font-weight: 700; padding: 3px 12px; border-radius: 9999px; font-size: 0.85rem;">
+                  Result: 75%
+                </span>
+              </div>
+              <h4 class="timeline-heading">Senior Secondary Education</h4>
+              <p class="timeline-sub">DAV Public School, Barhi</p>
+              <p class="timeline-text">
+                Completed secondary senior schooling with a strong academic focus on mathematics, physics, and science disciplines.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <span class="timeline-tag">Secondary (10th Grade)</span>
+                <span class="tech-tag" style="background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.4); color: #a78bfa; font-weight: 700; padding: 3px 12px; border-radius: 9999px; font-size: 0.85rem;">
+                  Result: 82%
+                </span>
+              </div>
+              <h4 class="timeline-heading">Secondary School Examination</h4>
+              <p class="timeline-sub">DAV Public School</p>
+              <p class="timeline-text">
+                Built foundational academic rigor, computational curiosity, and scientific reasoning with an 82% distinction.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Showcase (Truthful: Projects & Learning) -->
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <div class="timeline-card-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <div>
+                <h3 class="timeline-card-title">Experience Philosophy</h3>
+                <p class="timeline-card-desc">Building Experience Through Projects &amp; Learning</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <span class="timeline-tag">Continuous Practice</span>
+              <h4 class="timeline-heading">Practical Application Development</h4>
+              <p class="timeline-sub">Self-Directed &amp; Coursework Projects</p>
+              <p class="timeline-text">
+                No formal corporate work experience yet; deliberately cultivating practical competency through real-world applications including student registration forms, environmental monitoring devices, and structured web interfaces.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <span class="timeline-tag">Skill Immersion</span>
+              <h4 class="timeline-heading">Active Coding &amp; Collaborative Labs</h4>
+              <p class="timeline-sub">Coding Platforms &amp; Peer Labs</p>
+              <p class="timeline-text">
+                Regularly practicing structured problem solving across platforms like HackerRank, NeoColab, CodeTantra, and GeeksforGeeks to strengthen algorithmic intuition.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Skills Section
+         ========================================================================= -->
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-cogs"></i>
+            <span>Technical Capabilities</span>
+          </div>
+          <h2 class="section-title">Skills &amp; Competencies</h2>
+          <p class="section-subtitle">Grounded in fundamental languages, modern tools, and collaborative teamwork.</p>
+        </div>
+
+        <div class="skills-container">
+          <!-- Programming Languages -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <div>
+                <h3 class="category-title">Programming Languages</h3>
+              </div>
+            </div>
+            <div class="skills-list">
+              <div class="skill-chip">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fab fa-java"></i>
+                <span>Java</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fas fa-file-code"></i>
+                <span>C</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fas fa-microchip"></i>
+                <span>C++</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fas fa-database"></i>
+                <span>Basic SQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fas fa-wrench"></i>
+              </div>
+              <div>
+                <h3 class="category-title">Tools &amp; Platforms</h3>
+              </div>
+            </div>
+            <div class="skills-list">
+              <div class="skill-chip">
+                <i class="fas fa-terminal"></i>
+                <span>CodeTantra</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fas fa-laptop-code"></i>
+                <span>NeoColab</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fab fa-hackerrank"></i>
+                <span>HackerRank</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fas fa-code"></i>
+                <span>GeeksforGeeks</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fab fa-figma"></i>
+                <span>Figma</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <div>
+                <h3 class="category-title">Soft Skills</h3>
+              </div>
+            </div>
+            <div class="skills-list">
+              <div class="skill-chip">
+                <i class="fas fa-lightbulb"></i>
+                <span>Problem-Solving</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fas fa-sync-alt"></i>
+                <span>Adaptability</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fas fa-book-reader"></i>
+                <span>Continuous Learning</span>
+              </div>
+              <div class="skill-chip">
+                <i class="fas fa-hands-helping"></i>
+                <span>Team Collaboration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Projects Section
+         ========================================================================= -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-folder-open"></i>
+            <span>Featured Work</span>
+          </div>
+          <h2 class="section-title">Projects &amp; Practical Applications</h2>
+          <p class="section-subtitle">Real coding exercises and applications built to strengthen logic and software design.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Student Registration Form -->
+          <div class="project-card">
+            <div class="project-visual">
+              <span class="project-visual-badge">Frontend UI</span>
+              <i class="fas fa-user-check project-visual-watermark"></i>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Student Registration Form</h3>
+              <p class="project-desc">
+                A project focused on form design and validation, helping practise structured input handling and frontend interface development.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag">Form Design</span>
+                <span class="tech-tag">Input Validation</span>
+                <span class="tech-tag">Frontend UI</span>
+                <span class="tech-tag">Editable Tech</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-primary btn-outline-sm" data-project-trigger="student-registration">
+                  <i class="fas fa-info-circle"></i>
+                  <span>View Details</span>
+                </button>
+                <a href="https://github.com/sujalkumaryadav72-gif" target="_blank" rel="noopener noreferrer" class="btn-outline-sm" aria-label="Student Registration Source Code">
+                  <i class="fab fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: AQI Detection Alarm Device -->
+          <div class="project-card" id="card-aqi-device">
+            <div class="project-visual">
+              <span class="project-visual-badge">Hardware &amp; IoT</span>
+              <i class="fas fa-smog project-visual-watermark"></i>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">AQI Detection Alarm Device</h3>
+              <p class="project-desc">
+                An electronic air-quality monitoring system engineered with responsive environmental sensors and an automated alarm system to trigger real-time alerts when pollution levels exceed safety limits.
+              </p>
+
+              <ul class="project-highlights-list">
+                <li><i class="fas fa-check-circle"></i> Air-quality monitoring device tracking real-time AQI changes</li>
+                <li><i class="fas fa-check-circle"></i> Integrated sensors &amp; alarm for instant pollution alerts</li>
+                <li><i class="fas fa-check-circle"></i> Microcontroller architecture &amp; electronic circuit assembly</li>
+                <li><i class="fas fa-check-circle"></i> Rigorously assembled &amp; tested for accurate sensor calibration</li>
+              </ul>
+
+              <div class="tech-tags">
+                <span class="tech-tag">Air Quality Sensors</span>
+                <span class="tech-tag">Microcontrollers</span>
+                <span class="tech-tag">Alarm Alert System</span>
+                <span class="tech-tag">Electronic Circuits</span>
+                <span class="tech-tag">Environmental Monitoring</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-primary btn-outline-sm" data-project-trigger="aqi-device">
+                  <i class="fas fa-info-circle"></i>
+                  <span>View Details</span>
+                </button>
+                <button class="btn-outline-sm btn-simulate-trigger" data-project-trigger="aqi-device" data-auto-simulate="true" title="Run Interactive Device Simulation">
+                  <i class="fas fa-play"></i>
+                  <span>Run Simulator</span>
+                </button>
+                <a href="https://github.com/sujalkumaryadav72-gif" target="_blank" rel="noopener noreferrer" class="btn-outline-sm" aria-label="AQI Detection Alarm Device Source Code">
+                  <i class="fab fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Smart Campus Navigator (From CV) -->
+          <div class="project-card" id="card-campus-navigator">
+            <div class="project-visual">
+              <span class="project-visual-badge">Full Stack MERN &amp; Maps</span>
+              <i class="fas fa-map-marked-alt project-visual-watermark"></i>
+            </div>
+            <div class="project-body">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                <h3 class="project-title">Smart Campus Navigator</h3>
+                <span class="timeline-tag" style="font-size: 0.76rem; padding: 2px 8px;">Oct 2026</span>
+              </div>
+              <p class="project-desc">
+                Web-based campus navigation platform to help students locate classrooms, offices, and campus facilities with interactive maps, location search, and event announcements.
+              </p>
+
+              <ul class="project-highlights-list">
+                <li><i class="fas fa-check-circle"></i> Interactive map with location search &amp; route navigation for quick campus exploration</li>
+                <li><i class="fas fa-check-circle"></i> Centralized interface for accessing campus locations, events &amp; announcements</li>
+                <li><i class="fas fa-check-circle"></i> Responsive UI delivering seamless cross-device experience (desktop &amp; mobile)</li>
+              </ul>
+
+              <div class="tech-tags">
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Maps API</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-primary btn-outline-sm" data-project-trigger="campus-navigator">
+                  <i class="fas fa-info-circle"></i>
+                  <span>View Details</span>
+                </button>
+                <a href="https://github.com/sujalkumaryadav72-gif" target="_blank" rel="noopener noreferrer" class="btn-outline-sm" aria-label="Smart Campus Navigator Source Code on GitHub">
+                  <i class="fab fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Certifications Section
+         ========================================================================= -->
+    <section id="certifications" class="certifications-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-award"></i>
+            <span>Honors &amp; Credentials</span>
+          </div>
+          <h2 class="section-title">Certificates &amp; Achievements</h2>
+          <p class="section-subtitle">Verified credentials and competitive programming marathon recognitions.</p>
+        </div>
+
+        <div class="certificates-grid">
+          <!-- Certificate 1: Google Student Ambassador Program & LPU Algo-N-Hunt -->
+          <div class="cert-card" data-cert-img="images/certificates/cert-google-algo-n-hunt.png" data-cert-title="Algo-N-Hunt (4th Position) - Google Student Ambassador Program" data-cert-issuer="Google &amp; Lovely Professional University (22-11-2025)">
+            <div class="cert-preview-wrap" data-cert-preview>
+              <span class="cert-badge-ribbon cert-badge-google">
+                <i class="fab fa-google"></i> Google Student Ambassador
+              </span>
+              <img src="images/certificates/cert-google-algo-n-hunt.png" alt="Google Student Ambassador Algo-N-Hunt Certificate" class="cert-thumb-img" loading="lazy">
+              <div class="cert-overlay">
+                <span class="cert-zoom-btn">
+                  <i class="fas fa-search-plus"></i> View Certificate
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-issuer-meta">
+                <span><i class="fas fa-university"></i> Lovely Professional University</span>
+                <span><i class="far fa-calendar-alt"></i> 22 Nov 2025</span>
+              </div>
+              <h3 class="cert-title">Algo-N-Hunt &bull; 4th Position Merit</h3>
+              <p class="cert-desc">
+                Secured 4th position in Algo-N-Hunt competitive coding event organized under the Google Student Ambassador Program at LPU, reflecting enthusiastic problem solving and algorithmic reasoning.
+              </p>
+              <div class="cert-footer">
+                <span class="tech-tag" style="background: rgba(66, 133, 244, 0.1); border-color: rgba(66, 133, 244, 0.3); color: #60a5fa;">
+                  🏆 4th Position
+                </span>
+                <button class="btn-outline-sm" data-cert-preview>
+                  <i class="fas fa-expand"></i> Inspect
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificate 2: Optimus Algo-N-Hunt Competitive Marathon -->
+          <div class="cert-card" data-cert-img="images/certificates/cert-optimus-algo-n-hunt.png" data-cert-title="Algo-N-Hunt Marathon (4th Position) - Student Organization OPTIMUS" data-cert-issuer="OPTIMUS (22nd November 2025)">
+            <div class="cert-preview-wrap" data-cert-preview>
+              <span class="cert-badge-ribbon cert-badge-optimus">
+                <i class="fas fa-medal"></i> OPTIMUS &bull; 4th Rank
+              </span>
+              <img src="images/certificates/cert-optimus-algo-n-hunt.png" alt="Optimus Algo-N-Hunt Certificate of Merit" class="cert-thumb-img" loading="lazy">
+              <div class="cert-overlay">
+                <span class="cert-zoom-btn">
+                  <i class="fas fa-search-plus"></i> View Certificate
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-issuer-meta">
+                <span><i class="fas fa-award"></i> Student Organization OPTIMUS</span>
+                <span><i class="far fa-calendar-alt"></i> 22 Nov 2025</span>
+              </div>
+              <h3 class="cert-title">Algo-N-Hunt Coding, Puzzle &amp; Gaming Marathon</h3>
+              <p class="cert-desc">
+                Certificate of Merit for securing 4th position across intensive competitive coding rounds, algorithmic logic puzzles, and team challenges, organized by Student Organization OPTIMUS.
+              </p>
+              <div class="cert-footer">
+                <span class="tech-tag" style="background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); color: #fbbf24;">
+                  ⚡ Speed &amp; Logic
+                </span>
+                <button class="btn-outline-sm" data-cert-preview>
+                  <i class="fas fa-expand"></i> Inspect
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificate 3: Infosys Springboard Python -->
+          <div class="cert-card" data-cert-img="images/certificates/cert-infosys-python.png" data-cert-title="Introduction to Python - Infosys Springboard" data-cert-issuer="Infosys Limited (February 5, 2026)">
+            <div class="cert-preview-wrap" data-cert-preview>
+              <span class="cert-badge-ribbon cert-badge-infosys">
+                <i class="fas fa-certificate"></i> Infosys Springboard
+              </span>
+              <img src="images/certificates/cert-infosys-python.png" alt="Infosys Springboard Introduction to Python Certificate" class="cert-thumb-img" loading="lazy">
+              <div class="cert-overlay">
+                <span class="cert-zoom-btn">
+                  <i class="fas fa-search-plus"></i> View Certificate
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-issuer-meta">
+                <span><i class="fas fa-building"></i> Infosys Limited</span>
+                <span><i class="far fa-calendar-alt"></i> 05 Feb 2026</span>
+              </div>
+              <h3 class="cert-title">Introduction to Python</h3>
+              <p class="cert-desc">
+                Course completion credential validating core Python syntax, functional programming, data handling, and algorithmic fundamentals. Verifiable via official Infosys Wingspan QR verification.
+              </p>
+              <div class="cert-footer">
+                <span class="tech-tag" style="background: rgba(2, 132, 199, 0.1); border-color: rgba(2, 132, 199, 0.3); color: #38bdf8;">
+                  ✔ Verified Credential
+                </span>
+                <button class="btn-outline-sm" data-cert-preview>
+                  <i class="fas fa-expand"></i> Inspect
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificate 4: INFERNOVERSE Participation -->
+          <div class="cert-card" data-cert-img="images/certificates/cert-infernoverse.png" data-cert-title="INFERNOVERSE - Certificate of Participation" data-cert-issuer="INFERNO &bull; Department of Student Organization">
+            <div class="cert-preview-wrap" data-cert-preview>
+              <span class="cert-badge-ribbon cert-badge-inferno">
+                <i class="fas fa-fire"></i> INFERNO
+              </span>
+              <img src="images/certificates/cert-infernoverse.png" alt="INFERNOVERSE Certificate of Participation" class="cert-thumb-img" loading="lazy">
+              <div class="cert-overlay">
+                <span class="cert-zoom-btn">
+                  <i class="fas fa-search-plus"></i> View Certificate
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-issuer-meta">
+                <span><i class="fas fa-users"></i> Department of Student Organization</span>
+                <span><i class="fas fa-star"></i> Active Participation</span>
+              </div>
+              <h3 class="cert-title">INFERNOVERSE Technical Participation</h3>
+              <p class="cert-desc">
+                Certificate of participation presented by INFERNO in recognition of enthusiastic involvement, problem solving commitment, and technical collaboration during INFERNOVERSE events.
+              </p>
+              <div class="cert-footer">
+                <span class="tech-tag" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #f87171;">
+                  🤝 Collaboration
+                </span>
+                <button class="btn-outline-sm" data-cert-preview>
+                  <i class="fas fa-expand"></i> Inspect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Services / Professional Focus Section
+         ========================================================================= -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-laptop-code"></i>
+            <span>Professional Focus</span>
+          </div>
+          <h2 class="section-title">What I Aim to Build</h2>
+          <p class="section-subtitle">Core areas of specialization as I grow towards a Full Stack Developer career.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <h3 class="service-title">Full Stack Web Development</h3>
+            <p class="service-desc">
+              Building responsive and functional web applications covering frontend interfaces and backend functionality.
+            </p>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <h3 class="service-title">Frontend Development</h3>
+            <p class="service-desc">
+              Creating clean, responsive, and user-friendly web interfaces with accessible layouts and polished interactions.
+            </p>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fas fa-sitemap"></i>
+            </div>
+            <h3 class="service-title">Web Application Development</h3>
+            <p class="service-desc">
+              Turning requirements into practical web-based applications with structured logic and intuitive interfaces.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Learning & Platforms Section
+         ========================================================================= -->
+    <section id="learning" class="learning-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-chart-line"></i>
+            <span>Growth &amp; Practice</span>
+          </div>
+          <h2 class="section-title">Learning &amp; Coding Platforms</h2>
+          <p class="section-subtitle">Showcasing a continuous-learning approach through structured courses, coding practice, and platforms.</p>
+        </div>
+
+        <div class="learning-intro">
+          <div class="learning-intro-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="learning-intro-text">
+            I actively engage with competitive platforms and structured university lab environments to hone logic, solve algorithmic challenges, and reinforce core computer science principles.
+          </div>
+        </div>
+
+        <div class="platforms-grid">
+          <!-- CodeTantra -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-icon">
+                <i class="fas fa-terminal"></i>
+              </div>
+              <h3 class="platform-name">CodeTantra</h3>
+            </div>
+            <p class="platform-desc">
+              Practicing structured programming, syntax mastering, and automated test-case validation across university coursework.
+            </p>
+          </div>
+
+          <!-- NeoColab -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3 class="platform-name">NeoColab</h3>
+            </div>
+            <p class="platform-desc">
+              Solving real-time lab assessments, algorithmic assignments, and reinforcing data structure logic.
+            </p>
+          </div>
+
+          <!-- HackerRank -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-icon">
+                <i class="fab fa-hackerrank"></i>
+              </div>
+              <h3 class="platform-name">HackerRank</h3>
+            </div>
+            <p class="platform-desc">
+              Tackling problem-solving challenges in Python, C, C++, and Java to refine problem breakdown and edge-case handling.
+            </p>
+          </div>
+
+          <!-- GeeksforGeeks -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3 class="platform-name">GeeksforGeeks</h3>
+            </div>
+            <p class="platform-desc">
+              Studying computer science articles, foundational algorithm explanations, and practicing programming questions.
+            </p>
+          </div>
+
+          <!-- GitHub -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <h3 class="platform-name">GitHub</h3>
+            </div>
+            <p class="platform-desc">
+              Managing repositories, version control workflows, maintaining clean commit history, and open-source exploration.
+            </p>
+          </div>
+
+          <!-- Figma -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-icon">
+                <i class="fab fa-figma"></i>
+              </div>
+              <h3 class="platform-name">Figma</h3>
+            </div>
+            <p class="platform-desc">
+              Visualizing UI wireframes, prototyping user journey flows, and conceptualizing clean interface hierarchies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Contact Section
+         ========================================================================= -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fas fa-envelope"></i>
+            <span>Get In Touch</span>
+          </div>
+          <h2 class="section-title">Let's Connect &amp; Collaborate</h2>
+          <p class="section-subtitle">Interested in internships, project collaborations, or discussing software engineering fundamentals.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Direct Details Cards -->
+          <div class="contact-info-column">
+            <!-- Email -->
+            <a href="mailto:sujalkumaryadav72@gmail.com" class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <div class="contact-label">Email</div>
+                <div class="contact-val">sujalkumaryadav72@gmail.com</div>
+              </div>
+            </a>
+
+            <!-- Phone -->
+            <a href="tel:9304792099" class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <div class="contact-label">Phone</div>
+                <div class="contact-val">+91 9304792099</div>
+              </div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/sujalkumaryadav72-gif" target="_blank" rel="noopener noreferrer" class="contact-card">
+              <div class="contact-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <div>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-val">github.com/sujalkumaryadav72-gif</div>
+              </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/sujal-kumar-2036a3393/" target="_blank" rel="noopener noreferrer" class="contact-card">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-val">linkedin.com/in/sujal-kumar-2036a3393</div>
+              </div>
+            </a>
+
+            <!-- Official CV Card -->
+            <a href="assets/Sujal_Kumar_CV.pdf" target="_blank" download="Sujal_Kumar_CV.pdf" class="contact-card" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05);">
+              <div class="contact-icon" style="color: #10b981;">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div>
+                <div class="contact-label" style="color: #10b981;">Official Resume / CV</div>
+                <div class="contact-val">Download Sujal_Kumar_CV.pdf</div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <div class="contact-form-card">
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Your Name</label>
+                <input type="text" id="contact-name" class="form-input" placeholder="e.g. Alex Smith" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Email Address</label>
+                <input type="email" id="contact-email" class="form-input" placeholder="e.g. alex@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject" class="form-label">Subject</label>
+                <input type="text" id="contact-subject" class="form-input" placeholder="Internship Opportunity / Inquiry" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Message</label>
+                <textarea id="contact-message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <i class="fas fa-paper-plane"></i>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Footer
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-bio">
+          <h4>Sujal Kumar</h4>
+          <p>Computer Science &amp; Engineering Student | Aspiring Full Stack Developer</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://github.com/sujalkumaryadav72-gif" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/sujal-kumar-2036a3393/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="mailto:sujalkumaryadav72@gmail.com" class="social-link" aria-label="Email Sujal">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; 2026 Sujal Kumar. Built with curiosity, code, and continuous learning.
+        </div>
+        <div class="footer-copy">
+          Lovely Professional University (LPU) &bull; B.Tech CSE (2029) &bull; CGPA: 7.52
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to top of page" title="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- =========================================================================
+       Interactive Project Details Modal
+       ========================================================================= -->
+  <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modal-project-title" class="modal-title">Project Title</h3>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal window">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section-title">Overview &amp; Purpose</div>
+        <p id="modal-project-desc" class="modal-desc">Description</p>
+
+        <!-- Highlights / Achievements Container -->
+        <div id="modal-highlights-section" style="display: none;">
+          <div class="modal-section-title">Key Contributions &amp; Implementation</div>
+          <ul id="modal-project-highlights" class="modal-highlights-list"></ul>
+        </div>
+
+        <!-- Interactive Live Simulation Container (AQI Device & More) -->
+        <div id="modal-simulation-section" style="display: none;">
+          <!-- Dynamically populated when simulation is available -->
+        </div>
+
+        <div class="modal-section-title">Learning Objectives</div>
+        <p id="modal-project-obj" class="modal-desc">Objectives</p>
+
+        <div class="modal-section-title">Technologies &amp; Architecture</div>
+        <div class="modal-tech-box">
+          <p>Key focus areas:</p>
+          <div id="modal-tech-tags" class="tech-tags"></div>
+        </div>
+
+        <div class="modal-section-title">Technical Specification Notice</div>
+        <p id="modal-project-notes" class="modal-desc" style="font-size: 0.88rem; color: var(--text-muted);"></p>
+      </div>
+      <div class="modal-footer">
+        <button id="modal-dismiss-btn" class="btn btn-secondary">Close</button>
+        <a href="https://github.com/sujalkumaryadav72-gif" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <i class="fab fa-github"></i>
+          <span>GitHub Source</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Certificate Lightbox Modal
+       ========================================================================= -->
+  <div id="cert-modal" class="cert-lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title">
+    <div class="cert-lightbox-container">
+      <div class="cert-lightbox-header">
+        <div>
+          <h3 id="cert-modal-title" class="cert-lightbox-title">Certificate</h3>
+          <p id="cert-modal-issuer" style="font-size: 0.84rem; color: var(--text-accent); font-family: var(--font-mono); margin-top: 3px;"></p>
+        </div>
+        <button id="cert-modal-close-btn" class="modal-close-btn" aria-label="Close certificate viewer">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cert-lightbox-body">
+        <img id="cert-modal-img" src="" alt="Full Resolution Certificate" class="cert-lightbox-img">
+      </div>
+      <div class="cert-lightbox-footer">
+        <span>Verified Credential &bull; Sujal Kumar</span>
+        <button id="cert-modal-dismiss-btn" class="btn btn-secondary" style="padding: 6px 18px; font-size: 0.85rem;">Close Preview</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Interactive CV Viewer Modal
+       ========================================================================= -->
+  <div id="cv-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+    <div class="modal-dialog cv-modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3 id="cv-modal-title" class="modal-title" style="display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-file-pdf" style="color: #ef4444;"></i>
+            <span>Sujal Kumar &bull; Curriculum Vitae</span>
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; font-family: var(--font-mono);">
+            B.Tech Computer Science &amp; Engineering &bull; Full Stack Developer
+          </p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a href="assets/Sujal_Kumar_CV.pdf" download="Sujal_Kumar_CV.pdf" class="btn btn-primary btn-outline-sm" title="Download PDF to device">
+            <i class="fas fa-download"></i>
+            <span>Download</span>
+          </a>
+          <a href="assets/Sujal_Kumar_CV.pdf" target="_blank" class="btn-outline-sm" title="Open PDF in new tab">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <button id="cv-modal-close-btn" class="modal-close-btn" aria-label="Close CV viewer">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="modal-body" style="padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+        <div class="cv-quick-meta">
+          <span><i class="fas fa-envelope"></i> sujalkumaryadav72@gmail.com</span>
+          <span><i class="fas fa-phone-alt"></i> +91-9304792099</span>
+          <span><i class="fab fa-linkedin"></i> LinkedIn Profile</span>
+          <span><i class="fab fa-github"></i> GitHub Profile</span>
+        </div>
+        <div class="cv-iframe-wrap">
+          <iframe id="cv-iframe" src="assets/Sujal_Kumar_CV.pdf" class="cv-iframe" title="Sujal Kumar Official CV Preview"></iframe>
+        </div>
+      </div>
+      <div class="modal-footer" style="padding: 14px 20px; justify-content: space-between;">
+        <span style="font-size: 0.82rem; color: var(--text-muted);">
+          Official CV &bull; Lovely Professional University &bull; CGPA: 7.52
+        </span>
+        <div style="display: flex; gap: 10px;">
+          <button id="cv-modal-dismiss-btn" class="btn btn-secondary">Close</button>
+          <a href="assets/Sujal_Kumar_CV.pdf" download="Sujal_Kumar_CV.pdf" class="btn btn-accent-cv" style="padding: 8px 16px;">
+            <i class="fas fa-file-download"></i>
+            <span>Download PDF</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujal Kumar | Software Developer &amp; 3D Interactive Portfolio</title>
+    <meta name="description" content="Personal Portfolio of Sujal Kumar - Software Developer, C++ & DSA Enthusiast with interactive 3D WebGL visuals & algorithmic simulations.">
+    <meta name="keywords" content="Sujal Kumar, Portfolio, Software Developer, C++, Data Structures, Algorithms, Web Developer, 3D WebGL">
+    <meta name="author" content="Sujal Kumar">
+    
+    <!-- Three.js 3D WebGL Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- =========================================================================
+         Header & Navigation Bar
+         ========================================================================= -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#hero" class="logo">
+                <span class="logo-badge">S</span>
+                <span>Sujal<span class="gradient-text">.dev</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">Who I Am</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Milestones</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+                    <i id="theme-icon" class="fas fa-sun"></i>
+                </button>
+                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Mobile Navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <nav id="mobile-nav" class="mobile-nav">
+            <a href="#hero" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">1. Who I Am</a>
+            <a href="#education" class="nav-link">2. My Education</a>
+            <a href="#skills" class="nav-link">3. My Skills</a>
+            <a href="#experience" class="nav-link">4. My Milestones</a>
+            <a href="#certifications" class="nav-link">5. My Certifications</a>
+            <a href="#contact" class="nav-link">6. Contact</a>
+        </nav>
+    </header>
+
+    <!-- =========================================================================
+         Hero Section with Prime Number Graph Animation & Intro
+         ========================================================================= -->
+    <section id="hero" class="hero-section">
+        <!-- Interactive Prime Canvas -->
+        <div id="prime-canvas-container">
+            <canvas id="prime-canvas"></canvas>
+        </div>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <!-- Hero Details -->
+            <div class="hero-details">
+                <div class="hero-tag">
+                    <i class="fas fa-cube"></i>
+                    <span>Algorithmic Thinker &amp; 3D Interactive Developer</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Sujal Kumar</span>
+                </h1>
+
+                <h2 class="hero-subtitle">
+                    <i class="fas fa-terminal" style="font-size: 1.1rem; color: var(--accent-purple);"></i>
+                    <span>C++ &amp; DSA Specialist | Software Developer</span>
+                </h2>
+
+                <p class="hero-desc">
+                    Passionate about building high-performance software, solving complex algorithmic challenges, and crafting immersive 3D digital experiences.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="assets/Sujal_Kumar_CV.pdf" target="_blank" download="Sujal_Kumar_CV.pdf" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>My CV</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        <span>Let's Talk</span>
+                    </a>
+                </div>
+
+                <div class="hero-socials">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:sujalkumaryadav72@gmail.com" class="social-link" title="Send Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+919304792099" class="social-link" title="Call / WhatsApp">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Interactive 3D Holographic Showcase Cube -->
+            <div class="hero-3d-wrapper">
+                <div class="cube-3d-scene" id="cube-3d-scene">
+                    <div class="cube-3d" id="hero-cube">
+                        <!-- Front Face: Profile -->
+                        <div class="cube-face cube-face-front">
+                            <div class="cube-face-inner">
+                                <div class="cube-badge"><i class="fas fa-code"></i> Developer</div>
+                                <div class="cube-avatar">
+                                    <i class="fas fa-user-astronaut"></i>
+                                </div>
+                                <h3 class="cube-name">Sujal Kumar</h3>
+                                <p class="cube-role">Software Developer</p>
+                                <div class="cube-tagline">C++ &amp; DSA Specialist</div>
+                            </div>
+                        </div>
+
+                        <!-- Back Face: Address & Contact -->
+                        <div class="cube-face cube-face-back">
+                            <div class="cube-face-inner">
+                                <div class="cube-badge"><i class="fas fa-map-marker-alt"></i> Address</div>
+                                <div class="cube-icon-large"><i class="fas fa-compass"></i></div>
+                                <h4 class="cube-location-title">Location</h4>
+                                <p class="cube-location-text">Petula, Hazaribagh, Jharkhand</p>
+                                <div class="cube-contact-pill">
+                                    <i class="fas fa-phone-alt"></i> +91 9304792099
+                                </div>
+                                <div class="cube-contact-pill email-pill">
+                                    <i class="fas fa-envelope"></i> sujalkumaryadav72@gmail.com
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Face: Skills -->
+                        <div class="cube-face cube-face-right">
+                            <div class="cube-face-inner">
+                                <div class="cube-badge"><i class="fas fa-layer-group"></i> Core Stack</div>
+                                <div class="cube-skills-list">
+                                    <span class="cube-skill-item"><i class="fas fa-laptop-code"></i> C &amp; C++ (90%)</span>
+                                    <span class="cube-skill-item"><i class="fas fa-cubes"></i> DSA &amp; OOPs</span>
+                                    <span class="cube-skill-item"><i class="fab fa-react"></i> React &amp; Node.js</span>
+                                    <span class="cube-skill-item"><i class="fas fa-database"></i> MySQL &amp; MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left Face: Academics & Schools -->
+                        <div class="cube-face cube-face-left">
+                            <div class="cube-face-inner">
+                                <div class="cube-badge"><i class="fas fa-graduation-cap"></i> Academics</div>
+                                <div class="cube-edu-item">
+                                    <span class="cube-edu-label">B.Tech CSE (LPU):</span>
+                                    <span class="cube-edu-score">CGPA: 7.73</span>
+                                </div>
+                                <div class="cube-edu-item">
+                                    <span class="cube-edu-label">12th Grade:</span>
+                                    <span class="cube-edu-school">DAV Public School in Barhi</span>
+                                    <span class="cube-edu-score">Result: 75%</span>
+                                </div>
+                                <div class="cube-edu-item">
+                                    <span class="cube-edu-label">10th Grade:</span>
+                                    <span class="cube-edu-school">DAV Public School</span>
+                                    <span class="cube-edu-score">Result: 82%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Face: Logic Grid -->
+                        <div class="cube-face cube-face-top">
+                            <div class="cube-face-inner tech-pattern">
+                                <i class="fas fa-microchip"></i>
+                                <span>Algorithmic Logic</span>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Face: 3D Grid -->
+                        <div class="cube-face cube-face-bottom">
+                            <div class="cube-face-inner tech-pattern">
+                                <i class="fas fa-cube"></i>
+                                <span>3D Interactive Realm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cube Controls -->
+                <div class="cube-controls">
+                    <span class="cube-instruction"><i class="fas fa-hand-pointer"></i> Drag or Click to Rotate:</span>
+                    <div class="cube-nav-btns">
+                        <button class="cube-nav-btn active" data-face="front">Profile</button>
+                        <button class="cube-nav-btn" data-face="left">Schools</button>
+                        <button class="cube-nav-btn" data-face="back">Address</button>
+                        <button class="cube-nav-btn" data-face="right">Skills</button>
+                        <button class="cube-nav-btn" id="cube-autorotate-btn" title="Toggle Auto-Rotation"><i class="fas fa-sync-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D Visual Engine Interactive Mode Switcher -->
+        <div class="prime-controls">
+            <div class="prime-controls-title">
+                <i class="fas fa-cube"></i>
+                <span>3D Visuals:</span>
+            </div>
+            <button class="prime-btn active" data-mode="cyber-3d">3D Cyber Mesh</button>
+            <button class="prime-btn" data-mode="helix-3d">3D Helix Wave</button>
+            <button class="prime-btn" data-mode="sphere-3d">3D Prime Sphere</button>
+            <button class="prime-btn" data-mode="polar-spiral">Polar Spiral</button>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 1: Who I Am (About Me)
+         ========================================================================= -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-user"></i>
+                    <span>Section 01</span>
+                </div>
+                <h2 class="section-title">Who <span class="gradient-text">I Am</span></h2>
+                <p class="section-subtitle">Get to know the passionate developer behind the code</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I am <strong>Sujal Kumar</strong>, a passionate Computer Science student and software developer driven by the beauty of mathematical logic and efficient algorithm design. My journey began with an insatiable curiosity about how lines of code translate into powerful computational solutions.
+                    </p>
+                    <p>
+                        I specialize in <strong>C++, Object-Oriented Programming (OOP), and Data Structures &amp; Algorithms (DSA)</strong>, with a sharp focus on writing clean, maintainable, and memory-efficient code. From optimizing search algorithms to crafting responsive web applications, I relish tackling hard engineering problems.
+                    </p>
+
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-brain"></i></div>
+                            <span>Algorithmic Problem Solver</span>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-code-branch"></i></div>
+                            <span>Clean Code &amp; OOPs</span>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-bolt"></i></div>
+                            <span>Fast Learner &amp; Adaptable</span>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-users"></i></div>
+                            <span>Collaborative Team Player</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animated Stat Counters -->
+                <div class="about-stats">
+                    <div class="glass-card stat-card">
+                        <div class="stat-number" data-target="200" data-suffix="+">0</div>
+                        <div class="stat-label">Problems Solved</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-number" data-target="100" data-suffix=" Days">0</div>
+                        <div class="stat-label">LeetCode Streak</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-number" data-target="7.73" data-suffix="">7.73</div>
+                        <div class="stat-label">Current CGPA</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-number" data-target="100" data-suffix="%">0</div>
+                        <div class="stat-label">Dedication</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 2: My Education
+         ========================================================================= -->
+    <section id="education" class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Section 02</span>
+                </div>
+                <h2 class="section-title">My <span class="gradient-text">Education</span></h2>
+                <p class="section-subtitle">Academic foundations and continuous knowledge acquisition</p>
+            </div>
+
+            <div class="education-timeline">
+                <!-- Degree Item -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-badge">Aug 2025 - 2029 (Present)</span>
+                        <h3 class="timeline-title">Bachelor of Technology - Computer Science and Engineering</h3>
+                        <h4 class="timeline-institute"><i class="fas fa-university"></i> Lovely Professional University, Phagwara, Punjab</h4>
+                        <p class="timeline-desc">
+                            Pursuing B.Tech in CSE with a current <strong>CGPA of 7.73</strong>. Focused on computer science core disciplines, programming systems, full-stack software development, and algorithm engineering.
+                        </p>
+                        <div class="coursework-tags">
+                            <span class="course-tag">Data Structures &amp; Algorithms</span>
+                            <span class="course-tag">Object-Oriented Programming (C/C++/Java)</span>
+                            <span class="course-tag">Full Stack Web Development</span>
+                            <span class="course-tag">Database Systems (MySQL, MongoDB)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Higher Secondary -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-badge">Jun 2022 - Mar 2024</span>
+                        <h3 class="timeline-title">Higher Secondary Education (Class XII)</h3>
+                        <h4 class="timeline-institute"><i class="fas fa-school"></i> DAV Public School in Barhi</h4>
+                        <p class="timeline-desc">
+                            Completed Higher Secondary Education with <strong>75%</strong>. Specialized in Science and Mathematics, building strong foundations in analytical reasoning, calculus, and logical problem solving.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Secondary School -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-badge">May 2021 - Mar 2022</span>
+                        <h3 class="timeline-title">Secondary School Education (Class X)</h3>
+                        <h4 class="timeline-institute"><i class="fas fa-award"></i> DAV Public School</h4>
+                        <p class="timeline-desc">
+                            Graduated with <strong>82%</strong> distinction. Demonstrated early academic excellence in Science and Mathematics with keen enthusiasm for technology and computer applications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 3: My Skills
+         ========================================================================= -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-tools"></i>
+                    <span>Section 03</span>
+                </div>
+                <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+                <p class="section-subtitle">Technical proficiencies, programming languages, and engineering tools</p>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Skill Category 1: Languages -->
+                <div class="skill-category-card">
+                    <div class="skill-category-header">
+                        <div class="category-icon"><i class="fas fa-code"></i></div>
+                        <h3 class="category-title">Programming Languages</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><span>C & C++</span><span>90%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Java</span><span>85%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>JavaScript (ES6+)</span><span>88%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Python</span><span>80%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 80%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2: Technologies / Full Stack -->
+                <div class="skill-category-card">
+                    <div class="skill-category-header">
+                        <div class="category-icon"><i class="fas fa-layer-group"></i></div>
+                        <h3 class="category-title">Web Technologies</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><span>React.js</span><span>90%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Node.js & Express.js</span><span>85%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>HTML5 & CSS3</span><span>95%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>RESTful APIs & Maps API</span><span>85%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3: Databases & Tools -->
+                <div class="skill-category-card">
+                    <div class="skill-category-header">
+                        <div class="category-icon"><i class="fas fa-database"></i></div>
+                        <h3 class="category-title">Databases & Tools</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><span>MySQL & MongoDB</span><span>88%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Git & GitHub</span><span>90%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Figma (UI/UX Prototyping)</span><span>82%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 82%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>VS Code & DevTools</span><span>92%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 92%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 4: Soft Skills & Fundamentals -->
+                <div class="skill-category-card">
+                    <div class="skill-category-header">
+                        <div class="category-icon"><i class="fas fa-user-check"></i></div>
+                        <h3 class="category-title">Soft Skills & Fundamentals</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Problem Solving & Logic</span><span>95%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Team Collaboration</span><span>90%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Time Management</span><span>88%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Adaptability & Fast Learning</span><span>92%</span></div>
+                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 92%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 4: My Experience & Milestones
+         ========================================================================= -->
+    <section id="experience" class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-trophy"></i>
+                    <span>Section 04</span>
+                </div>
+                <h2 class="section-title">My <span class="gradient-text">Milestones</span></h2>
+                <p class="section-subtitle">Coding journey, competitive programming achievements, and key milestones</p>
+            </div>
+
+            <div class="milestones-grid">
+                <!-- Milestone 1: Algo-N-Hunt 4th Position -->
+                <div class="glass-card milestone-card">
+                    <span class="milestone-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.3);">4th Position</span>
+                    <div class="milestone-icon" style="color: var(--accent-amber);"><i class="fas fa-medal"></i></div>
+                    <h3 class="milestone-title">Algo-N-Hunt Marathon</h3>
+                    <h4 class="milestone-subtitle">Google Student Ambassador &amp; OPTIMUS</h4>
+                    <p class="milestone-desc">
+                        Secured 4th position in the competitive coding, algorithmic puzzle &amp; gaming marathon at Lovely Professional University, proving high-speed computational logic.
+                    </p>
+                </div>
+
+                <!-- Milestone 2: LeetCode 100 Days -->
+                <div class="glass-card milestone-card">
+                    <span class="milestone-badge">Badge Awarded</span>
+                    <div class="milestone-icon"><i class="fas fa-fire"></i></div>
+                    <h3 class="milestone-title">LeetCode 100 Days Badge</h3>
+                    <h4 class="milestone-subtitle">Daily Problem Solving Streak</h4>
+                    <p class="milestone-desc">
+                        Achieved the prestigious LeetCode 100 Days Badge by maintaining consistent, disciplined daily problem solving across dynamic programming, arrays, strings, and trees.
+                    </p>
+                </div>
+
+                <!-- Milestone 3: 200+ Problems Solved -->
+                <div class="glass-card milestone-card">
+                    <span class="milestone-badge">200+ Solved</span>
+                    <div class="milestone-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="milestone-title">200+ Coding Problems Solved</h3>
+                    <h4 class="milestone-subtitle">Online Coding Platforms</h4>
+                    <p class="milestone-desc">
+                        Solved more than 200 programming problems on online coding platforms during regular algorithmic practice, data structure optimization, and competitive coding.
+                    </p>
+                </div>
+
+                <!-- Milestone 4: Hackathon INFERNOVERSE Finalist -->
+                <div class="glass-card milestone-card">
+                    <span class="milestone-badge">24H Hackathon</span>
+                    <div class="milestone-icon"><i class="fas fa-trophy"></i></div>
+                    <h3 class="milestone-title">INFERNOVERSE Hackathon</h3>
+                    <h4 class="milestone-subtitle">HiDevs.xyz &amp; DSO Finalist</h4>
+                    <p class="milestone-desc">
+                        Successfully participated in the national 24-hour hackathon, engineering innovative software solutions and exploring cutting-edge Generative AI development.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 5: My Certification
+         ========================================================================= -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-certificate"></i>
+                    <span>Section 05</span>
+                </div>
+                <h2 class="section-title">My <span class="gradient-text">Certifications</span></h2>
+                <p class="section-subtitle">Verified professional credentials and technical training</p>
+            </div>
+
+            <div class="cert-grid">
+                <!-- Cert 1: Google Student Ambassador Program -->
+                <div class="glass-card cert-card">
+                    <div class="cert-thumb-box">
+                        <span class="cert-thumb-badge merit"><i class="fas fa-medal"></i> 4th Position</span>
+                        <img src="assets/certificates/google_student_ambassador_cert.png" alt="Google Student Ambassador Certificate - Algo-N-Hunt" class="cert-thumb-img" loading="lazy">
+                        <div class="cert-thumb-overlay">
+                            <a href="assets/certificates/google_student_ambassador_cert.png" target="_blank" rel="noopener noreferrer" class="cert-preview-link">
+                                <i class="fas fa-expand"></i> View Full Certificate
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-header">
+                        <div class="cert-icon" style="background: rgba(66, 133, 244, 0.15); border-color: rgba(66, 133, 244, 0.3); color: #4285f4;">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div>
+                            <h3 class="cert-title">Algo-N-Hunt (4th Position)</h3>
+                            <div class="cert-issuer">Google Student Ambassador Program (LPU)</div>
+                        </div>
+                    </div>
+                    <p class="cert-desc">
+                        Awarded Certificate of Merit for securing <strong>4th position</strong> in Algo-N-Hunt, a competitive event organized by Google Student Ambassador Charchit Singh at Lovely Professional University, demonstrating algorithmic mastery and problem solving.
+                    </p>
+                    <div class="cert-footer">
+                        <span class="cert-date"><i class="far fa-calendar-alt"></i> 22 Nov 2025</span>
+                        <a href="assets/certificates/google_student_ambassador_cert.pdf" target="_blank" class="cert-verify-btn">
+                            <i class="fas fa-file-pdf"></i> View PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cert 2: OPTIMUS Certificate of Merit -->
+                <div class="glass-card cert-card">
+                    <div class="cert-thumb-box">
+                        <span class="cert-thumb-badge merit"><i class="fas fa-award"></i> Merit Award</span>
+                        <img src="assets/certificates/optimus_algo_n_hunt_cert.jpg" alt="OPTIMUS Algo-N-Hunt Certificate of Merit" class="cert-thumb-img" loading="lazy">
+                        <div class="cert-thumb-overlay">
+                            <a href="assets/certificates/optimus_algo_n_hunt_cert.jpg" target="_blank" rel="noopener noreferrer" class="cert-preview-link">
+                                <i class="fas fa-expand"></i> View Full Certificate
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-header">
+                        <div class="cert-icon" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: var(--accent-cyan);">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3 class="cert-title">Algo-N-Hunt Coding Marathon</h3>
+                            <div class="cert-issuer">Student Organization OPTIMUS</div>
+                        </div>
+                    </div>
+                    <p class="cert-desc">
+                        Certificate of Merit for securing <strong>4th position</strong> in "ALGO-N-HUNT", a high-intensity competitive coding, puzzle and gaming marathon reflecting exceptional speed, logic, and competitive excellence.
+                    </p>
+                    <div class="cert-footer">
+                        <span class="cert-date"><i class="far fa-calendar-alt"></i> 22 Nov 2025</span>
+                        <a href="assets/certificates/optimus_algo_n_hunt_cert.jpg" target="_blank" class="cert-verify-btn">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cert 3: HiDevs.xyz INFERNOVERSE Hackathon -->
+                <div class="glass-card cert-card">
+                    <div class="cert-thumb-box">
+                        <span class="cert-thumb-badge"><i class="fas fa-bolt"></i> 24h Hackathon</span>
+                        <img src="assets/certificates/hidevs_infernoverse_cert.jpg" alt="HiDevs INFERNOVERSE 2025 Hackathon Certificate" class="cert-thumb-img" loading="lazy">
+                        <div class="cert-thumb-overlay">
+                            <a href="assets/certificates/hidevs_infernoverse_cert.jpg" target="_blank" rel="noopener noreferrer" class="cert-preview-link">
+                                <i class="fas fa-expand"></i> View Full Certificate
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-header">
+                        <div class="cert-icon" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.3); color: var(--accent-purple);">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h3 class="cert-title">INFERNOVERSE 24H Hackathon</h3>
+                            <div class="cert-issuer">HiDevs.xyz (Deepak Chawla, CEO)</div>
+                        </div>
+                    </div>
+                    <p class="cert-desc">
+                        Certificate of Participation for completing INFERNOVERSE 2025 24-Hour Hackathon powered in collaboration with HiDevs.xyz, recognized for advancing innovation and Generative AI learning.
+                    </p>
+                    <div class="cert-footer">
+                        <span class="cert-date"><i class="far fa-calendar-alt"></i> 14-15 Nov 2025</span>
+                        <a href="assets/certificates/hidevs_infernoverse_cert.jpg" target="_blank" class="cert-verify-btn">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cert 4: INFERNO & DSO -->
+                <div class="glass-card cert-card">
+                    <div class="cert-thumb-box">
+                        <span class="cert-thumb-badge"><i class="fas fa-users"></i> National Event</span>
+                        <img src="assets/certificates/inferno_dso_cert.jpg" alt="INFERNO & DSO INFERNOVERSE Certificate" class="cert-thumb-img" loading="lazy">
+                        <div class="cert-thumb-overlay">
+                            <a href="assets/certificates/inferno_dso_cert.jpg" target="_blank" rel="noopener noreferrer" class="cert-preview-link">
+                                <i class="fas fa-expand"></i> View Full Certificate
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-header">
+                        <div class="cert-icon" style="background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); color: #ef4444;">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div>
+                            <h3 class="cert-title">INFERNOVERSE Hackathon</h3>
+                            <div class="cert-issuer">INFERNO &amp; DSO (Student Org)</div>
+                        </div>
+                    </div>
+                    <p class="cert-desc">
+                        Honored with Certificate of Participation in INFERNOVERSE for remarkable effort, technical collaboration, problem solving, and relentless commitment throughout the hackathon.
+                    </p>
+                    <div class="cert-footer">
+                        <span class="cert-date"><i class="far fa-calendar-alt"></i> Nov 2025</span>
+                        <a href="assets/certificates/inferno_dso_cert.jpg" target="_blank" class="cert-verify-btn">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cert 5: Machine Learning -->
+                <div class="glass-card cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon"><i class="fas fa-robot"></i></div>
+                        <div>
+                            <h3 class="cert-title">Machine Learning Foundations</h3>
+                            <div class="cert-issuer">TOC Infosys</div>
+                        </div>
+                    </div>
+                    <p class="cert-desc">
+                        Certified training covering foundational machine learning models, supervised learning, data preprocessing, and analytical model evaluation.
+                    </p>
+                    <div class="cert-footer">
+                        <span class="cert-date"><i class="far fa-calendar-alt"></i> Infosys Verified</span>
+                        <span class="cert-verify-btn"><i class="fas fa-check-circle"></i> Certified</span>
+                    </div>
+                </div>
+
+                <!-- Cert 6: Full Stack Development -->
+                <div class="glass-card cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon"><i class="fas fa-layer-group"></i></div>
+                        <div>
+                            <h3 class="cert-title">Learning Full Stack Development</h3>
+                            <div class="cert-issuer">Infosys Springboard</div>
+                        </div>
+                    </div>
+                    <p class="cert-desc">
+                        Comprehensive full stack web development curriculum encompassing frontend technologies, backend REST APIs, responsive design, and database integration.
+                    </p>
+                    <div class="cert-footer">
+                        <span class="cert-date"><i class="far fa-calendar-alt"></i> Infosys Springboard</span>
+                        <span class="cert-verify-btn"><i class="fas fa-check-circle"></i> Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 6: Contact
+         ========================================================================= -->
+    <section id="contact" class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span>Section 06</span>
+                </div>
+                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="section-subtitle">Have a question, collaboration idea, or opportunity? Let's connect!</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Information Cards -->
+                <div class="contact-info">
+                    <!-- Email Card -->
+                    <div class="contact-card-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>Email Me</h4>
+                            <a href="mailto:sujalkumaryadav72@gmail.com">sujalkumaryadav72@gmail.com</a>
+                        </div>
+                        <button class="copy-btn" data-copy="sujalkumaryadav72@gmail.com" title="Copy Email">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="contact-card-item">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Phone / WhatsApp</h4>
+                            <a href="tel:+919304792099">+91 9304792099</a>
+                        </div>
+                        <button class="copy-btn" data-copy="+919304792099" title="Copy Phone">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="contact-card-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Address / Location</h4>
+                            <p>Petula, Hazaribagh, Jharkhand</p>
+                        </div>
+                        <button class="copy-btn" data-copy="Petula, Hazaribagh, Jharkhand" title="Copy Address">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
+                    </div>
+
+                    <!-- Social Presence Card -->
+                    <div class="contact-card-item">
+                        <div class="contact-icon"><i class="fas fa-share-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Social Profiles</h4>
+                            <div style="display: flex; gap: 0.75rem; margin-top: 0.25rem;">
+                                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); font-size: 1.25rem;"><i class="fab fa-github"></i></a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-indigo); font-size: 1.25rem;"><i class="fab fa-linkedin"></i></a>
+                                <a href="mailto:sujalkumaryadav72@gmail.com" style="color: var(--accent-purple); font-size: 1.25rem;" title="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:+919304792099" style="color: var(--accent-emerald); font-size: 1.25rem;" title="Phone"><i class="fas fa-phone-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Message Form -->
+                <div class="glass-card">
+                    <form id="portfolio-contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Smith" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="e.g. alex@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" placeholder="e.g. Project Collaboration / Job Opportunity" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         Footer
+         ========================================================================= -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <a href="#hero" class="logo">
+                <span class="logo-badge">S</span>
+                <span>Sujal<span class="gradient-text">.dev</span></span>
+            </a>
+
+            <p class="footer-quote">
+                "Code is like mathematics: simplicity and elegance are the highest forms of sophistication."
+            </p>
+
+            <p class="footer-copy">
+                &copy; 2026 Sujal Kumar. Crafted with passion &amp; mathematics.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Scroll back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-alert" class="toast-alert"></div>
+
+    <!-- Unified 3D Portfolio Script (Single File to Include) -->
+    <script src="js/portfolio-bundle.js"></script>
+</body>
+</html>
